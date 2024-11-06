@@ -4,10 +4,11 @@ function MyComponent2() {
   return (
     /*空標籤：Fragment*/
     <>
-    <h1>react</h1>
+      <h1>react</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, nulla at. Sed accusamus, velit distinctio optio fugit, assumenda vitae soluta accusantium magni atque suscipit eos quo sint beatae! Laboriosam, eos?</p>
+      <p>Lorem ipsum dolor sit amet.</p>
     </>
-    )
+  )
 }
 
 function App() {
