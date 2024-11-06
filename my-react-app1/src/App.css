@@ -1,14 +1,30 @@
 h1 {
     font-size: 40px;
-    color: blueviolet;
+    color: darkslategray;
+    padding-left: 150px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .unLineColor {
     border-bottom: double blue 5px;
 }
 
+div{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.theList{
+    display: flex;
+    /* background-color: antiquewhite; */
+    justify-content: center;
+    
+}
+
 #listA {
     background-color: aqua;
+    width:300px;
+    justify-items: center;
+    
 }
 
 hr {

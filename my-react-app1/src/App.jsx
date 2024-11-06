@@ -1,7 +1,7 @@
 import "./App.css"
 
 function Component() {
-  return <h1>React</h1>
+  return <h1>| React</h1>
 }
 
 function App() {
@@ -28,22 +28,24 @@ function App() {
 
     // 三元運算子
     // 判斷式?  條件成立  :條件不成立
-    return book.bookName!=="CSS"? true : false;
+    return book.bookName !== "CSS" ? true : false;
   })
 
   return (
 
     <>
       {/* 使用陣列方法一 */}
-      {listItem }
+      {listItem}
       <hr />
-      <div id="listA">
-      {/* 使用陣列方法二→ map()=> 此方法可以把一個陣列轉換成另一個陣列 */}
-      {
-        listBooks.map((book) => {
-          return <div key={book.id}>{book.bookName}</div>
-        })
-      }
+      <div className="theList">
+        <div id="listA">
+          {/* 使用陣列方法二→ map()=> 此方法可以把一個陣列轉換成另一個陣列 */}
+          {
+            listBooks.map((book) => {
+              return <div key={book.id}>{book.bookName}</div>
+            })
+          }
+        </div>
       </div>
       <hr />
       {/* 顯示filter()過濾陣列資料 */}
@@ -58,7 +60,7 @@ function App() {
 
 
 
-    </>
+    </ >
   )
 }
 
