@@ -1,23 +1,28 @@
 
-// 建立新的元件，建議增加在App標籤外(元件中不建議再建立新元件，但可以在元件中使用其他元件)
-function MyComponent2() {
-  return (
-    /*空標籤：Fragment*/
-    <>
-      <h1>react</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, nulla at. Sed accusamus, velit distinctio optio fugit, assumenda vitae soluta accusantium magni atque suscipit eos quo sint beatae! Laboriosam, eos?</p>
-      <p>Lorem ipsum dolor sit amet.</p>
-    </>
-  )
-}
-
 function App() {
 
+  // 建立函式方法一
+  function sayHi() {
+    alert('Hello!')
+  }
+  // 建立函式方法二
+  const sayHi2=()=>{
+    alert('Bonjour!')
+  }
+
   return (
+
     <div>
-      <MyComponent2></MyComponent2>
-      <MyComponent2 />
-      <MyComponent2 />
+      {/* 事件處理1：在html標籤上綁定事件 */}
+      {/* 匿名函式↓ */}
+      <button onClick={function () { alert('哈囉~') }}>我是按鈕一號</button>
+      {/* 箭頭函式↓ */}
+      <button onClick={() => { alert('おはよう~') }}>我是按鈕二號</button>
+      
+      {/* 事件處理2：呼叫函式 【較常見(減少要渲染的return內部的資料量)】*/}
+      {/* 建立等待被呼叫的函式，函式名稱後面不可加()，否則會直接被執行↓ */}
+      <button onClick={sayHi}>我是按鈕三號</button>
+      <button onClick={sayHi2}>我是按鈕四號</button>
     </div>
   )
 }
