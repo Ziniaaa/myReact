@@ -1,29 +1,61 @@
 
+function Component() {
+  return <h1>React</h1>
+}
+
 function App() {
 
-  // 建立函式方法一
-  function sayHi() {
-    alert('Hello!')
-  }
-  // 建立函式方法二
-  const sayHi2=()=>{
-    alert('Bonjour!')
-  }
+  // 建立陣列元件(可以是任何形式的資料 ex→元件)
+  // 同一個陣列中，key屬性的質不可以重複
+  const listItem = [
+    <Component key="0" />,
+    <Component key="1" />,
+    <Component key="2" />,
+  ]
+
+  const listBooks = [
+    { bookName: 'HTML', id: 'book1' },
+    { bookName: 'CSS', id: 'book2' },
+    { bookName: 'Javascript', id: 'book3' },
+  ]
+
+  // 過濾出陣列中，除了CSS的書本
+  const filterBooks = listBooks.filter((book) => {
+    // if (book.bookName !== 'CSS') {
+    //   return true
+    // }
+
+    // 三元運算子
+    // 判斷式?  條件成立  :條件不成立
+    return book.bookName!=="CSS"? true : false;
+  })
 
   return (
 
-    <div>
-      {/* 事件處理1：在html標籤上綁定事件 */}
-      {/* 匿名函式↓ */}
-      <button onClick={function () { alert('哈囉~') }}>我是按鈕一號</button>
-      {/* 箭頭函式↓ */}
-      <button onClick={() => { alert('おはよう~') }}>我是按鈕二號</button>
-      
-      {/* 事件處理2：呼叫函式 【較常見(減少要渲染的return內部的資料量)】*/}
-      {/* 建立等待被呼叫的函式，函式名稱後面不可加()，否則會直接被執行↓ */}
-      <button onClick={sayHi}>我是按鈕三號</button>
-      <button onClick={sayHi2}>我是按鈕四號</button>
-    </div>
+    <>
+      {/* 使用陣列方法一 */}
+      {listItem}
+      <hr />
+      {/* 使用陣列方法二→ map()=> 此方法可以把一個陣列轉換成另一個陣列 */}
+      {
+        listBooks.map((book) => {
+          return <div key={book.id}>{book.bookName}</div>
+        })
+      }
+      <hr />
+      {/* 顯示filter()過濾陣列資料 */}
+      {
+        filterBooks.map((book) => {
+          return <div key={book.id}>{book.bookName}</div>
+        })
+
+      }
+
+
+
+
+
+    </>
   )
 }
 
