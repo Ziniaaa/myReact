@@ -1,67 +1,134 @@
+// 載入app.css
+import './App.css'
 
-function App() {
-    // 建立物件變數↓
-    // 若有多筆紀錄，使用大括號{}把資料包起來(用:代表=)
-    const person = {
-        s1: {
-            name: "同學1",
-            age: 10,
+function MyComponent1() {
+    const feature = {
+        f1: {
+            title: "教學影音",
+            text: "透過影音課程OOXX",
         },
-        s2: {
-            name: "同學2",
-            age: 11,
+        f2: {
+            title: "良性互動",
+            text: "學習過程中OOXX",
         },
-        s3: {
-            name: "同學3",
-            age: 13,
+        f3: {
+            title: "趨勢分享",
+            text: "分享目前時下OOXX",
         }
     }
+    const { f1, f2, f3 } = feature;
 
-    // 【方法一】多筆資料的物件解構方法(有點像給予資料別名):一般寫法
-    // const { s1, s2, s3 } = person;
+    return <>
+        <ul>
+            <h2>{f1.title}</h2>
+            <p>{f1.text}</p>
+        </ul>
+        <ul>
+            <h2>{f2.title}</h2>
+            <p>{f2.text}</p>
+        </ul>
+        <ul>
+            <h2>{f3.title}</h2>
+            <p>{f3.text}</p>
+        </ul>
+    </>
+}
 
-    // 【方法二】多筆資料的物件解構方法:解構+展開...(其餘運算子)
-    // 解構s1，展開s2,s3
-    const { s1, ...other } = person;
-    // console.log(s1);
-    // console.log(other);
-    // console.log(other.s3);
-
-
-    const personA = {
-        name: "同學A",
-        age: 15
+function MyComponent2() {
+    const recommend = {
+        r1: {
+            imgUrl: "../public/images/unity.jpg",
+            title: "Unity5",
+            text: "透過影音課程OOXX最新的Unity公開課程，",
+            teacher: "XXX",
+            hours: 4,
+            price1: 1600,
+            price2: 1200,
+        },
+        r2: {
+            imgUrl: "../public/images/gamesalad.jpg",
+            title: "GameSalad 2D遊戲製作",
+            text: "視覺化操作，2D遊戲快速開發，不寫程式OOXX",
+            teacher: "XXX",
+            hours: 8,
+            price1: 3200,
+            price2: 1600,
+        },
+        r3: {
+            imgUrl: "../public/images/gwd.jpg",
+            title: "Google Web Design",
+            text: "用於建立HTML5廣告動畫，透過時間軸OOXX",
+            teacher: "XXX",
+            hours: 8,
+            price1: 3200,
+            price2: 1600,
+        }
     }
-    // function showName(obj) {
-    //     console.log(obj);
-    //     console.log(obj.name);
-    //     console.log(obj.age);
-    // }
-    // 將物件屬性直接解構給函式參數
-    function showName({ name, age }) {
-        console.log(name);
-        console.log(age);
-    }
-    showName(personA);
+    const { r1, r2, r3 } = recommend;
 
+    return <>
+        <div id='cards'>
+            <a className='box'>
+                <img className="cardImg" src={r1.imgUrl} alt="" />
+                <p>
+                <h3 className="cardTitle">{r1.title}</h3>
+                <p className="cardText">{r1.text}</p>
+                <p className="teacherName">{`講師:${r1.teacher}`}</p>
+                <p className="classHours">{`影音課程時數:${r1.hours}`}</p>
+                </p>
+                <p className='price'><span>{`原價NT$${r1.price1}`}</span>{`NT$${r1.price2}`}</p>
+                <button className="payment">付款上課去</button>
+            </a>
+            <a className='box'>
+                <img className="cardImg" src={r2.imgUrl} alt="" />
+                <p>
+                <h3 className="cardTitle">{r2.title}</h3>
+                <p className="cardText">{r2.text}</p>
+                <p className="teacherName">{`講師:${r2.teacher}`}</p>
+                <p className="classHours">{`影音課程時數:${r2.hours}`}</p>
+                </p>
+                <p className='price'><span>{`原價NT$${r2.price1}`}</span>{`NT$${r2.price2}`}</p>
+                <button className="payment">付款上課去</button>
+            </a>
+            <a className='box'>
+                <img className="cardImg" src={r3.imgUrl} alt="" />
+                <p>
+                <h3 className="cardTitle">{r3.title}</h3>
+                <p className="cardText">{r3.text}</p>
+                <p className="teacherName">{`講師:${r3.teacher}`}</p>
+                <p className="classHours">{`影音課程時數:${r3.hours}`}</p>
+                </p>
+                <p className='price'><span>{`原價NT$${r3.price1}`}</span>{`NT$${r3.price2}`}</p>
+                <button className="payment">付款上課去</button>
+            </a>
+        </div>
+    </>
+}
+
+
+function App() {
     return (
         <>
-            <div>{`同學一姓名:${s1.name}`}</div>
-            <div>{`同學一年齡:${s1.age}歲`}</div>
-            <div>{`同學二姓名:${other.s2.name}`}</div>
-            <div>{`同學三年齡:${other.s3.age}歲`}</div>
-
-
-            {/* <div>第一位同學的姓名:{s1.name}</div>
-            <div>第一位同學的年齡:{s1.age}歲</div>
-            <hr />
-            <div>第二位同學的姓名:{s2.name}</div>
-            <div>第二位同學的年齡:{s2.age}歲</div>
-            <hr />
-            <div>第三位同學的姓名:{s3.name}</div>
-            <div>第三位同學的年齡:{s3.age}歲</div> 
-            */}
-
+            <div className="wrap">
+                {/* 頁首廣告區 */}
+                <div className="header">
+                    <img src="../public/images/banner.jpg" alt="" />
+                </div>
+                {/* 特色區 */}
+                <div className="feature">
+                    <MyComponent1 />
+                </div>
+                {/* 主標 */}
+                <h3 className="mainTitle">讓學習成為一種習慣</h3>
+                {/* 推薦課程區 */}
+                <div >
+                    <h3>推薦課程</h3>
+                    <MyComponent2 />
+                </div>
+                
+                {/* 頁尾區 */}
+                <footer>&copy;童瀞萱</footer>
+            </div>
 
         </>
     )
