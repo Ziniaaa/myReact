@@ -1,0 +1,116 @@
+/* 樣式歸零 */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* 版頭 */
+.header img {
+    width: 100%;
+}
+
+
+/* 特色區 */
+.feature {
+    display: flex;
+    justify-content: space-around;
+    width: 80%; /*為了減少四周留白區*/
+    margin: auto; /*四周留白區平均分配*/
+}
+
+.feature h2{
+    color: red;
+}
+
+.feature p {
+    color: grey;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+/* 主標區 */
+.mainTitle {
+    background-color: red;
+    color: white;
+    /* padding: 20px; */
+    line-height: 50px;
+}
+
+/* 推薦課程區 */
+h3 {
+    display: flex;
+    justify-content: center;
+    color: green;
+    margin-top: 20px;
+}
+
+.cardImg {
+    width: 100%;
+}
+
+#cards {
+    display: flex;
+    justify-content: center;
+}
+
+#cards p{
+    line-height: 1.5;
+    margin: 5px 0;
+}
+
+
+.box {
+    padding: 20px;
+    margin: 10px;
+   
+    width: 300px;
+    /* border: 2px solid; */
+    /* 陰影：水平 垂直 擴展度 色彩 */
+    box-shadow: 0 0 5px rgb(120, 120, 120);
+}
+
+.cardTitle {
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+}
+
+.cardText {
+    color: rgb(100, 143, 165);
+}
+.teacherName , .classHours{
+    color: rgb(201, 201, 201);
+}
+
+.price{
+    color: red;
+    justify-self: center;
+}
+
+span {
+    text-decoration: line-through;
+    color: grey;
+}
+
+button {
+    background-color: rgb(209, 23, 23);
+    color: white;
+    border: none;
+    width: 100%;
+    line-height: 200% ;
+    border-radius: 5px;
+    
+}
+
+/* 頁尾區 */
+footer {
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
