@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*以外框寬度為主*/
+}
+
+body {
+    background-color: rgb(228, 246, 255);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.wrapper {
+    background-color: teal;
+    color: aliceblue;
+    width: 450px;
+    padding: 30px;
+    border-radius: 5px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.create-form {
+    height: 30px;
+    width: 100%;
+    border: 1px, solid, aliceblue;
+    margin: 25px 0;
+    display: flex;
+    justify-content: space-between;
+    }
+
+/* ↓ > 表示create-form底下的input子元素，再下一層不會抓到(反之用空白) */
+.create-form>input {
+    /* background-color: transparent; */
+    background: none;
+    border: none;
+    outline: none;
+    height: 100%;
+    width: 100%;
+    padding-left: 10px;
+    color: aliceblue;
+}
+
+/* ::→選取偽類別 */
+.create-form>input::placeholder{
+    color:aliceblue;
+}
+
+.create-form>button {
+    border: none;
+    width: 50px;
+    height: 100%;
+    background-color: aliceblue;
+    color:teal;
+    /* ↓滑鼠形狀 */
+    cursor: pointer;
+}

@@ -1,34 +1,69 @@
-import { useState } from "react"
+import "./App.css"
+
+function Component() {
+  return <h1>| React</h1>
+}
 
 function App() {
-    // 定義變數name與方法setName
-    // 透過useState將內容丟給變數
-    const [name, setName] = useState("阿來");
-    const[name2, setName2]=useState("Arai");
 
-    function changeName(e) {
-        setName2(e.target.value);
-    }
+  // 建立陣列元件(可以是任何形式的資料 ex→元件)
+  // 同一個陣列中，key屬性的質不可以重複
+  const listItem = [
+    <Component key="0" />,
+    <Component key="1" />,
+    <Component key="2" />,
+  ]
 
-    return (
-        <>
-            <h1>設計一個輸入名字的欄位，並且即時顯現出來</h1>
-            <hr />
-            <h3>目前文字方塊的內容：{name}</h3>
-            {/* 使用value把name帶入input */}
-            {/* 當文字更改的時候會觸發onChange行為(像是onClick)↓ */}
-            {/* e→event→觸發事件的參數 */}
-            請輸入姓名：<input type="text" value={name} onChange={(e) => {
-                // console.log(e);
-                // 抓取內容的位置，透過setName方法傳回給value
-                setName(e.target.value);
-            }} />{name}
-            <br />
-            請輸入姓名2：<input type="text" value={name2} onChange={changeName} />{name2}
+  const listBooks = [
+    { bookName: 'HTML', id: 'book1' },
+    { bookName: 'CSS', id: 'book2' },
+    { bookName: 'Javascript', id: 'book3' },
+  ]
 
-        </>
-    )
+  // 過濾出陣列中，除了CSS的書本
+  const filterBooks = listBooks.filter((book) => {
+    // if (book.bookName !== 'CSS') {
+    //   return true
+    // }
 
+    // 三元運算子
+    // 判斷式?  條件成立  :條件不成立
+    return book.bookName !== "CSS" ? true : false;
+  })
+
+  return (
+
+    <>
+      {/* 使用陣列方法一 */}
+      {listItem}
+      <hr />
+      <div className="theList">
+        <div id="listA">
+          {/* 使用陣列方法二→ map()=> 此方法可以把一個陣列轉換成另一個陣列 */}
+          {
+            listBooks.map((book) => {
+              return <div key={book.id}>{book.bookName}</div>
+            })
+          }
+        </div>
+      </div>
+      <hr />
+      {/* 顯示filter()過濾陣列資料 */}
+      {
+        filterBooks.map((book) => {
+          return <div key={book.id}>
+            {book.bookName}
+            </div>
+        })
+
+      }
+
+
+
+
+
+    </ >
+  )
 }
 
 export default App
