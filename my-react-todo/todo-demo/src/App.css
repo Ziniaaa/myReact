@@ -58,3 +58,17 @@ body {
     /* ↓滑鼠形狀 */
     cursor: pointer;
 }
+
+/* todo列表 */
+.todo{
+    background-color: aliceblue;
+    color: teal;
+    height: 30px;
+    width: 100%;
+    margin-top: 10px;
+    padding: 0 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
