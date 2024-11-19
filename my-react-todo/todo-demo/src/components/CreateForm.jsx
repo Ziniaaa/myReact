@@ -24,7 +24,7 @@ function CreateForm({addTodo}) {
 
                 } />
             <button type="submit">加入</button>
-            {/* ↑submit事件表示：按下按鈕後，內容會被處理 */}
+            {/* ↑submit事件表示：按下按鈕後，內容會被提交處理 */}
 
         </form>
     )

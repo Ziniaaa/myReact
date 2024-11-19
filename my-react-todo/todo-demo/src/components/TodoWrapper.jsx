@@ -19,13 +19,26 @@ function TodoWrapper() {
         setTodos([...todos, { content: content, id: Math.random() }])
     };
 
+    // 建立刪除todo函式，傳給Todo元件使用
+    // 使用filter方法，去除被刪除的todo
+    const deleteTodo = (id) => {
+        setTodos(todos.filter((todo) => {
+            // 此處使用「回調函式」↑
+            // 檢查目前的id是否為被刪除的id
+            // 如果不是，則保留
+            return todo.id !==id
+        }))
+    }
+
     return (
         <div className="wrapper">
             <h1>代辦事項</h1>
-            <CreateForm addTodo={addTodo}/>
+            <CreateForm addTodo={addTodo} />
             {
                 todos.map((todo) => {
-                    return <Todo todo={todo} key={todo.id} />
+                    return <Todo todo={todo} key={todo.id} 
+                    deleteTodo={deleteTodo}
+                    />
                 })
             }
 
