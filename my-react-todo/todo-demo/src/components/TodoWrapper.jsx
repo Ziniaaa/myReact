@@ -13,16 +13,17 @@ function TodoWrapper() {
     // ]);
 
     // 因為要判定todo是否被點擊，所以要增加一個標記屬性→isCompleted
+    // 新增陣列屬性isEdit→判別是否編輯中
     const [todos, setTodos] = useState([
-        { content: 'List1', id: Math.random(), isCompleted: false },
-        { content: 'List2', id: Math.random(), isCompleted: false },
+        { content: 'List1', id: Math.random(), isCompleted: false, isEdit: false },
+        { content: 'List2', id: Math.random(), isCompleted: false, isEdit: false },
     ]);
 
     // 建立加入新的todo內容
     // 1.使用...其餘運算子來保留原陣列內容
     // 2.再加入新的物件內容
     const addTodo = (content) => {
-        setTodos([...todos, { content: content, id: Math.random(), isCompleted: false }])
+        setTodos([...todos, { content: content, id: Math.random(), isCompleted: false, isEdit: false }])
     };
 
     // 建立刪除todo函式，傳給Todo元件使用
@@ -43,7 +44,37 @@ function TodoWrapper() {
             // YES → 1.取出todo 2.將isCompleted的屬性值反向處理(true→false/false→true)
             // NO  → todo不變
             return todo.id === id
-                ? {...todo,isCompleted:!todo.isCompleted}
+                ? { ...todo, isCompleted: !todo.isCompleted }
+                : todo
+        }))
+    }
+
+    // 建立是否為編輯中的函式(雙向toggle)
+    const toggleIsEdit = (id) => {
+        setTodos(todos.map((todo) => {
+            // ↑逐筆檢查目前的todo的id是否等於被修改的id
+            // YES → 1.取出todo資料 2.修改isEdit的屬性值為反向
+            // NO  → 維持原樣，todo不變
+            // 【三元運算子寫法】
+            return todo.id === id
+                ? { ...todo, isEdit: !todo.isEdit }
+                : todo
+            // 【if else寫法】
+            // if (todo.id===id) {
+            //     return{...todo,  isEdit: !todo.isEdit }
+            // }else{
+            //     return todo
+            // }
+        }))
+    }
+
+    // 建立完成修改的函式(按下完成的動作)
+    // 1.異動content為新的內容
+    // 2.isEdit改回false
+    const editTodo = (id, newContent) => {
+        setTodos(todos.map((todo) => {
+            return todo.id === id
+                ? { ...todo, content: newContent, isEdit: false }
                 : todo
         }))
     }
@@ -58,6 +89,8 @@ function TodoWrapper() {
                     return <Todo todo={todo} key={todo.id}
                         deleteTodo={deleteTodo}
                         toggleCompleted={toggleCompleted}
+                        toggleIsEdit={toggleIsEdit}
+                        editTodo={editTodo}
                     />
                 })
             }
