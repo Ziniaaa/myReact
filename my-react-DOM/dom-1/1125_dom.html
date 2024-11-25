@@ -29,14 +29,21 @@
         }
         
         function getSubjects(){
-        //顯示被選取(checked) 的核取方塊的內容
+        //顯示被選取(checked) 的核取方塊的內容(value)
         for(let i=0;i<subjects.length;i++){
             if(subjects[i].checked){
             console.log(subjects[i].value);
         }}}
 
         // 監聽事件寫法↓
-        document.getElementById('btn1').addEventListener('click',getSubjects());
+        // addEventListener('事件名稱',事件發生時的程式處理)
+        // 事件發生時的程式處理|方法一 → 呼叫函式名稱，不加小括號(若加了就會直接執行)
+        // 事件發生時的程式處理|方法二 →使用箭頭函式，直接撰寫
+        document.getElementById('btn1').addEventListener('click',()=>{
+            for(let i=0;i<subjects.length;i++){
+            if(subjects[i].checked){
+            console.log(subjects[i].value);
+        }}});
 
     </script>
 </body>
