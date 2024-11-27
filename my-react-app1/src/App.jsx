@@ -1,51 +1,60 @@
-import { useEffect } from "react";
+import { useState } from "react"
 
 function App() {
-  // 建立變色函式
-  useEffect(()=>{
-    const p1 = document.getElementById('p1');
-    p1.addEventListener('mouseover',()=>{
-      p1.style.color = "blue";
-      p1.style.fontWeight = "bold";
-    })
-    p1.addEventListener('mouseout',()=>{
-      p1.style.color = "";
-      p1.style.fontWeight = "";
-    })
-
-    const p2 = document.querySelector('#p2');
-    p2.addEventListener('mouseenter',()=>{
-      p2.textContent = "哈囉";
-    })
-    p2.addEventListener('mouseleave',()=>{
-      p2.textContent = "變內容";
-    })
-
-    const h1=document.getElementById('h1');
-    h1.addEventListener('click',(e)=>{
-      console.log(e.target.textContent);
-      e.target.textContent="click事件被觸發了";
-      e.target.style.color="purple";
-
-    })
-
-    // const h1=document.getElementById('h1');
-    // h1.addEventListener('click',()=>{
-    //   const h1Text=h1.textContent;
-    //   console.log(h1Text);
-    //   alert(h1Text);
-    // })
-
-      },[]);
-  
+  // 使用者名稱
+  const [inputUserName, setInputUserName] = useState("我是文字方塊");
+  // 縣市名稱
+  const [selCity, setSelCity] = useState("");
+  // 建立陣列方法
+  const arrCity = ['台北市', '桃園市', '新北市'];
 
 
   return (
     <>
-      <h1 id="h1">滑鼠事件</h1>
+      <h1>React-表單</h1>
       <hr />
-      <p id="p1">變色</p>
-      <p id="p2">變內容</p>
+      
+      {/* input */}
+      <label htmlFor="username">使用者名稱</label>
+      <input type="text" id="username"
+        value={inputUserName}
+        onChange={(e) => {
+          // console.log(`更改前${inputUserName}`)
+          setInputUserName(e.target.value);
+          // console.log(`更改後${inputUserName}`)
+        }}
+      />{inputUserName}
+
+      <br />
+      
+      {/* select */}
+      <label htmlFor="city">縣市名</label>
+      <select name="" id="city"
+        value={selCity}
+        onChange={(e) => {
+          setSelCity(e.target.value);
+        }}
+      >
+
+
+        {/* 逐行寫法 */}
+        {/* <option value="台北市" 台北市></option>
+        <option value="桃園市" 桃園市></option>
+        <option value="新北市" 新北市></option>
+        <option value="台中市" 台中市></option>
+        <option value="台南市" 台南市></option>
+        <option value="高雄市" 高雄市></option> */}
+
+        {/* 讀取陣列寫法※下為JS陣列寫法，故在JSX return中需要包大括號中撰寫 */}
+        {/* disabled → 無法使用(失效) */}
+        <option value="" disabled>請選擇</option>
+        {
+          arrCity.map((city) => {
+            return <option value={city} key={city}>{city}</option>
+          }
+          )}
+
+      </select >{selCity}
     </>
   )
 }
