@@ -14,7 +14,7 @@ function App() {
 
   // 複選：多個核取方塊(：用陣列方式存放)
   const [chkList, setChkList] = useState([]);
-  const arrList = ['HTML', 'CSS', 'JS','React'];
+  const arrList = ['HTML', 'CSS', 'JS', 'React'];
 
   // 建立函式處理被勾選的項目
   const handleChkList = (e) => {
@@ -35,6 +35,19 @@ function App() {
     }
   }
 
+  // 選項按鈕
+  const [isCar, setIsCar] = useState('n');
+
+  // 喜好統計
+  const [q1Ans, setQ1Ans] = useState('');
+  const [q2Ans, setQ2Ans] = useState('');
+
+  // 統計次數
+  const [ans1Count, setAns1Count] = useState(0);
+  const [ans2Count, setAns2Count] = useState(0);
+  const [ans3Count, setAns3Count] = useState(0);
+
+  
 
   return (
     <>
@@ -98,7 +111,7 @@ function App() {
       {
         arrList.map((list) => {
           return <div key={list}>
-            <input type="checkbox" id= {list} name="like"
+            <input type="checkbox" id={list} name="like"
               value={list}
               onChange={handleChkList}
             />
@@ -117,6 +130,95 @@ function App() {
       */}
       <br />
       {chkList}
+
+      {/* 選項按鈕 */}
+      汽車駕照<span id="car">{isCar}</span>
+      <input type="radio" name="car" value="有" id="y" onChange={(e) => {
+        setIsCar('y')
+      }} />
+      <label htmlFor="y">有</label>
+      <input type="radio" name="car" value="無" id="n" onChange={(e) => {
+        setIsCar('n')
+      }} />
+      <label htmlFor="n">無</label>
+
+      <hr />
+      1.選擇喜歡的飲料
+      <input type="radio" name="Q1" value="咖啡" id="Q1-1" onChange={(e) => {
+        setQ1Ans(e.target.value)
+      }} />
+      <label htmlFor="Q1-1">咖啡</label>
+      <input type="radio" name="Q1" value="奶茶" id="Q1-2" onChange={(e) => {
+        setQ1Ans(e.target.value)
+      }} />
+      <label htmlFor="Q1-2">奶茶</label>
+      <input type="radio" name="Q1" value="青汁" id="Q1-3" onChange={(e) => {
+        setQ1Ans(e.target.value)
+      }} />
+      <label htmlFor="Q1-3">青汁</label>
+      <br />
+      現所選擇的飲料是：{q1Ans}
+      <br />
+      2.選擇喜歡的甜點
+      <input type="radio" name="Q2" value="蛋糕" id="Q2-1" onChange={(e) => {
+        setQ2Ans(e.target.value)
+      }} />
+      <label htmlFor="Q2-1">蛋糕</label>
+      <input type="radio" name="Q2" value="餅乾" id="Q2-2" onChange={(e) => {
+        setQ2Ans(e.target.value)
+      }} />
+      <label htmlFor="Q2-2">餅乾</label>
+      <input type="radio" name="Q2" value="布丁" id="Q2-3" onChange={(e) => {
+        setQ2Ans(e.target.value)
+      }} />
+      <label htmlFor="Q2-3">布丁</label>
+      <br />
+      現所選擇的甜點是：{q2Ans}
+      <br />
+      <br />
+      <button onClick={() => {
+        // 將所有次數歸零
+        setAns1Count(0);
+        setAns2Count(0);
+        setAns3Count(0);
+
+
+        // 統計次數
+        // 第一題
+        const q1a = document.getElementById('Q1-1');
+        if (q1a.checked) {
+          setAns1Count(ans1Count + 1);
+        }
+        const q1b = document.getElementById('Q1-2');
+        if (q1b.checked) {
+          setAns2Count(ans2Count + 1);
+        }
+        const q1c = document.getElementById('Q1-3');
+        if (q1c.checked) {
+          setAns3Count(ans3Count + 1);
+        }
+        // 第二題
+        const q2a = document.getElementById('Q2-1');
+        if (q2a.checked) {
+          setAns1Count(ans1Count + 1);
+        }
+        const q2b = document.getElementById('Q2-2');
+        if (q2b.checked) {
+          setAns2Count(ans2Count + 1);
+        }
+        const q2c = document.getElementById('Q2-3');
+        if (q2c.checked) {
+          setAns3Count(ans3Count + 1);
+        }
+        console.log(q1a)
+        console.log(ans1Count)
+        
+      }}>送出統計結果</button>
+      <br />
+      顯示統計次數結果：
+      <p>選項1：{ans1Count}次</p>
+      <p>選項2：{ans2Count}次</p>
+      <p>選項3：{ans3Count}次</p>
     </>
   )
 }

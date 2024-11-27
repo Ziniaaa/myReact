@@ -108,15 +108,19 @@ function App() {
             }
             {/* ↑用陣列簡化 */}
             {/* 
-      <input type="checkbox" id="chkList1" name="like" value="HTML" onChange={handleChkList} />
-      <label htmlFor="chkList1">HTML</label>
-      <input type="checkbox" id="chkList2" name="like" value="CSS" onChange={handleChkList} />
-      <label htmlFor="chkList2">CSS</label>
-      <input type="checkbox" id="chkList3" name="like" value="JS" onChange={handleChkList} />
-      <label htmlFor="chkList3">JS</label> 
+        <input type="checkbox" id="chkList1" name="like" value="HTML" onChange={handleChkList} />
+        <label htmlFor="chkList1">HTML</label>
+        <input type="checkbox" id="chkList2" name="like" value="CSS" onChange={handleChkList} />
+        <label htmlFor="chkList2">CSS</label>
+        <input type="checkbox" id="chkList3" name="like" value="JS" onChange={handleChkList} />
+        <label htmlFor="chkList3">JS</label> 
       */}
             <br />
             {chkList}
+                
+                {/* 選項按鈕 */}
+                汽車駕照
+                <input type="radio" name="car" value="有"/>
         </>
     )
 }
