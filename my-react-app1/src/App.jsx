@@ -3,17 +3,44 @@ import { useState } from "react"
 function App() {
   // 使用者名稱
   const [inputUserName, setInputUserName] = useState("我是文字方塊");
+
   // 縣市名稱
   const [selCity, setSelCity] = useState("");
   // 建立陣列方法
   const arrCity = ['台北市', '桃園市', '新北市'];
 
+  // 閱讀確認
+  const [check, setCheck] = useState(false);
 
-  return (                                                                                                       
+  // 複選：多個核取方塊(：用陣列方式存放)
+  const [chkList, setChkList] = useState([]);
+  const arrList = ['HTML', 'CSS', 'JS','React'];
+
+  // 建立函式處理被勾選的項目
+  const handleChkList = (e) => {
+    // console.log(e.target.value);
+    // 使用其餘運算子保留已被勾選的項目，再加上目前勾選的項目
+    // ↓檢查是否被勾選
+    if (e.target.checked) {
+      // 是 → 原本+新的
+      setChkList([...chkList, e.target.value]);
+    } else {
+      // 否 → 從原本被勾選的項目中，拿掉現在不要的(filter)
+      setChkList(
+        chkList.filter((list) => {
+          return list !== e.target.value
+        })
+      )
+
+    }
+  }
+
+
+  return (
     <>
       <h1>React-表單</h1>
       <hr />
-      
+
       {/* input */}
       <label htmlFor="username">使用者名稱</label>
       <input type="text" id="username"
@@ -26,7 +53,7 @@ function App() {
       />{inputUserName}
 
       <br />
-      
+
       {/* select */}
       <label htmlFor="city">縣市名</label>
       <select name="" id="city"
@@ -55,6 +82,41 @@ function App() {
           )}
 
       </select >{selCity}
+      <br />
+
+      {/* 單一核取方塊 */}
+      <label htmlFor="isCheck">閱讀確認</label>
+      <input type="checkbox" id="isCheck"
+        value={check}
+        onChange={(e) => {
+          // 處理勾選值的變化
+          setCheck(e.target.checked);
+        }} />{check.toString()}
+      <br />
+
+      {/* 複選：多個核取方塊 */}
+      {
+        arrList.map((list) => {
+          return <div key={list}>
+            <input type="checkbox" id= {list} name="like"
+              value={list}
+              onChange={handleChkList}
+            />
+            <label htmlFor={list}>{list}</label>
+          </div>
+        })
+      }
+      {/* ↑用陣列簡化 */}
+      {/* 
+      <input type="checkbox" id="chkList1" name="like" value="HTML" onChange={handleChkList} />
+      <label htmlFor="chkList1">HTML</label>
+      <input type="checkbox" id="chkList2" name="like" value="CSS" onChange={handleChkList} />
+      <label htmlFor="chkList2">CSS</label>
+      <input type="checkbox" id="chkList3" name="like" value="JS" onChange={handleChkList} />
+      <label htmlFor="chkList3">JS</label> 
+      */}
+      <br />
+      {chkList}
     </>
   )
 }
