@@ -1,31 +1,41 @@
 * {
-    margin: 0;
-    padding: 0;
-
+    /* margin: 0;
+    padding: 0; */
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-section {
+section .wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.city2 {
     display: flex;
 }
 
 .city {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     width: 45%;
 
     margin: 10px;
 
     border: 1px solid #cccccc;
-    border-radius: 3px;
-
+    border-radius: 5px;
 }
 
 .city h3 {
     background-color: #eeeeee;
     width: 100%;
     text-align: center;
+    /* padding: 8px,0px; */
+    margin: 0;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #cccccc;
+    font-weight: 400;
 }
 
 h2 {
@@ -34,20 +44,33 @@ h2 {
 
 .date {
     display: flex;
-    flex-direction: row;
+    margin: 15px;
+    /* border: 1px solid red; */
+    justify-content: space-around;
+
 }
 
 .period {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* border: 1px solid blue; */
+
 
 }
 
 .period img {
-    width: 60%;
+    width: 70%;
 }
 
-p{
-text-align: center;
+p {
+    text-align: center;
+    margin: 5px;
+}
+
+.pDate{
+    font-size:larger;
+}
+
+.pRain{
+    font-style: italic;
 }
