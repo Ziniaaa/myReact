@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+section {
+    display: flex;
+}
+
+.city {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+
+    margin: 10px;
+
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+
+}
+
+.city h3 {
+    background-color: #eeeeee;
+    width: 100%;
+    text-align: center;
+}
+
+h2 {
+    color: red;
+}
+
+.date {
+    display: flex;
+    flex-direction: row;
+}
+
+.period {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.period img {
+    width: 60%;
+}
+
+p{
+text-align: center;
+}
