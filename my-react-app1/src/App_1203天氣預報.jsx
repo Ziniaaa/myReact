@@ -61,7 +61,8 @@ function App() {
                             </div>
                         </div>
                     </div>
-                    h2>36小時天氣預報</h2>
+                </div>
+                <h2>36小時天氣預報</h2>
                 <div className="city2">
                     <div className="city">
                         <h3>{city.locationName}</h3>

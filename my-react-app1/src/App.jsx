@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import axios from 'axios';
 import './App.css'
 import { IoIosUmbrella } from "react-icons/io";
+import ShowCity from "./ShowCity";
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
       // elementName → Wx → 天氣概況
       // elementName → PoP → 下雨機率
 
-      function shoeCity(){
+      function showCity(){
       location.map((city) => {
         return <div key={city.locationName}>{city.locationName}</div>
       })}
@@ -34,38 +35,9 @@ function App() {
     <>
       <section className="wrap">
         <h2>36小時天氣預報</h2>
-        <div className="city2">
-          <div className="city">
-            <h3>{city.locationName}</h3>
-            <div className="date">
+        <ShowCity/>
 
-              <div className="period">
-                <p className="pDate">2日</p>
-                <p>上午6:00<br />~<br />下午6:00</p>
-                <p><img src="./weatherIcon/晴時多雲.svg" alt="" /></p>
-                <p>晴時多雨</p>
-                <p className="pRain"><IoIosUmbrella />10%</p>
-              </div>
 
-              <div className="period">
-                <p className="pDate">2日</p>
-                <p>下午6:00<br />~<br />上午6:00</p>
-                <p><img src="./weatherIcon/晴時多雲.svg" alt="" /></p>
-                <p>晴時多雨</p>
-                <p className="pRain"><IoIosUmbrella />10%</p>
-              </div>
-
-              <div className="period">
-                <p className="pDate">3日</p>
-                <p>上午6:00<br />~<br />下午6:00</p>
-                <p><img src="./weatherIcon/晴時多雲.svg" alt="" /></p>
-                <p>晴時多雨</p>
-                <p className="pRain"><IoIosUmbrella />10%</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
       </section>
 
     </>
