@@ -8,13 +8,23 @@ function App() {
 
   useEffect(() => {
     (async () => {
+      // json本地端要在web-server伺服器下才能執行
       // const data = await axios.get('./F-C0032-001.json');
 
-      // json的連結必須是
+      // json的連結必須是公開網址下的來源
       const data = await axios.get('https://ziniaaa.github.io/myReact/json/F-C0032-001.json');
-      // const { location } = data.data.cwaopendata.dataset;
-      // const options = { hour: 'numeric', minute: 'numeric' };
-      console.log(data);
+      // console.log(data);
+      const { location } = data.data.cwaopendata.dataset;
+      // console.log(location);
+
+      // locatuinName → 縣市名稱 
+      // elementName → Wx → 天氣概況
+      // elementName → PoP → 下雨機率
+
+      function shoeCity(){
+      location.map((city) => {
+        return <div key={city.locationName}>{city.locationName}</div>
+      })}
 
     })()
   }, [])
@@ -22,42 +32,13 @@ function App() {
 
   return (
     <>
-
       <section className="wrap">
         <h2>36小時天氣預報</h2>
         <div className="city2">
           <div className="city">
-            <h3>臺北市</h3>
+            <h3>{city.locationName}</h3>
             <div className="date">
-              <div className="period">
-                <p className="pDate">2日</p>
-                <p>上午6:00<br />~<br />下午6:00</p>
-                <p><img src="./weatherIcon/晴時多雲.svg" alt="" /></p>
-                <p>晴時多雨</p>
-                <p className="pRain"><IoIosUmbrella />10%</p>
-              </div>
 
-              <div className="period">
-                <p className="pDate">2日</p>
-                <p>下午6:00<br />~<br />上午6:00</p>
-                <p><img src="./weatherIcon/晴時多雲.svg" alt="" /></p>
-                <p>晴時多雨</p>
-                <p className="pRain"><IoIosUmbrella />10%</p>
-              </div>
-
-              <div className="period">
-                <p className="pDate">3日</p>
-                <p>上午6:00<br />~<br />下午6:00</p>
-                <p><img src="./weatherIcon/晴時多雲.svg" alt="" /></p>
-                <p>晴時多雨</p>
-                <p className="pRain"><IoIosUmbrella />10%</p>
-              </div>
-            </div>
-
-          </div>
-          <div className="city">
-            <h3>新北市</h3>
-            <div className="date">
               <div className="period">
                 <p className="pDate">2日</p>
                 <p>上午6:00<br />~<br />下午6:00</p>
@@ -83,8 +64,8 @@ function App() {
               </div>
             </div>
           </div>
+
         </div>
-
       </section>
 
     </>
