@@ -22,7 +22,7 @@ function App() {
       // elementName → Wx → 天氣概況
       // elementName → PoP → 下雨機率
 
-      function showCity(){
+      function ShowCity(){
       location.map((city) => {
         return <div key={city.locationName}>{city.locationName}</div>
       })}
