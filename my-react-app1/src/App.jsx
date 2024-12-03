@@ -9,7 +9,9 @@ function App() {
   useEffect(() => {
     (async () => {
       // const data = await axios.get('./F-C0032-001.json');
-      const data = await axios.get('https://github.com/Ziniaaa/myReact/blob/main/my-react-app1/src/F-C0032-001.json');
+
+      // json的連結必須是
+      const data = await axios.get('https://ziniaaa.github.io/myReact/json/F-C0032-001.json');
       const { location } = data.data.cwaopendata.dataset;
       const options = { hour: 'numeric', minute: 'numeric' };
       console.log(location);
