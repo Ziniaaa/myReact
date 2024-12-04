@@ -6,35 +6,40 @@ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
 section .wrap {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    /* flex-direction: column; */
 }
 
-.city2 {
+.container {
     display: flex;
+    flex-wrap: wrap;/*自動換行*/
+    justify-content: center;
+
 }
 
-.city {
+.item {
     display: flex;
     flex-direction: column;
     /* align-items: center; */
-    width: 45%;
+    width: 550px;
 
     margin: 10px;
 
     border: 1px solid #cccccc;
     border-radius: 5px;
+
+    text-align: center;
 }
 
-.city h3 {
+.item h3 {
     background-color: #eeeeee;
     width: 100%;
-    text-align: center;
     /* padding: 8px,0px; */
     margin: 0;
     padding-top: 8px;
     padding-bottom: 8px;
     border-bottom: 1px solid #cccccc;
+    border-radius: 5px;
+
     font-weight: 400;
 }
 
