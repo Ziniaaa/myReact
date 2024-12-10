@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>jq-Cycle</title>
     <style>
         img {
             width: 500px;
@@ -29,7 +29,18 @@
     <script src="./js/jquery.cycle.all.js"></script>
 
     <!-- 撰寫自己的jQuery -->
-    
+    <script>
+        $(function () {
+            //預設為淡入淡出
+            $('#imgCycle').cycle({
+                fx: 'fade', //輪播方式(fade,zoom,shuffle,turnDown,curtainX,scrollRight)
+                sync: false, //有無前一張的殘影
+                delay: -2000, //第一次第一張圖停留時間
+                timeout: 8000, //輪播速度
+            });
+        });
+
+    </script>
 
 
 </body>

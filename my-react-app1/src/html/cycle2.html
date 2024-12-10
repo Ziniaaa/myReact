@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jq-Cycle2</title>
+    <style>
+        img {
+            width: 600px;
+            height: 450px;
+        }
+
+        .box {
+            border: red solid 1px;
+            width: 600px;
+            height: 450px;
+            position: relative;
+        }
+
+        /* 輪播導覽列 */
+        #nav {
+            position: absolute;
+            bottom: 11px;
+            right: 15px;
+            z-index: 99;
+        }
+
+        #nav a {
+            margin-left: 10px;
+            /* padding: 8px 13px; */
+            /* border: rgb(173, 61, 20) solid 2px; */
+            border-radius: 50%;
+            color: rgb(173, 61, 20);
+            text-decoration: none;
+            display: inline-block; /*轉成區塊元素並水平排列*/
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            line-height: 25px;
+            font-family: Tahoma;
+        }
+        #nav a.activeSlide{
+            background-color: rgb(173, 61, 20);
+            color: white;
+        }
+        /*遮色區*/
+        .mask{
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            z-index: 98;
+            background-color: black;
+            width: 100%;
+            height: 50px;
+            opacity: 50%;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div id="imgCycle">
+            <img src="./images/01.jpg" alt="">
+            <img src="./images/02.jpg" alt="">
+            <img src="./images/03.jpg" alt="">
+            <img src="./images/04.jpg" alt="">
+            <img src="./images/05.jpg" alt="">
+        </div>
+        <div class="mask"></div>
+        <!-- <div><nav>輪播鈕導覽列</nav></div> -->
+    </div>
+
+
+    <!-- 載入jQuery主程式 -->
+    <script src="./jquery-3.7.1.min.js"></script>
+    <!-- 載入輪播主程式 -->
+    <script src="./js/jquery.cycle.all.js"></script>
+
+    <!-- 撰寫自己的jQuery -->
+    <script>
+        $(function () {
+            //預設為淡入淡出
+            $('#imgCycle').after('<div id="nav"></div>').cycle({
+                fx: 'fade', //輪播方式(fade,zoom,shuffle,turnDown,curtainX,scrollRight)
+                sync: false, //有無前一張的殘影
+                delay: -2000, //第一次第一張圖停留時間
+                timeout: 8000, //輪播速度
+                pager: '#nav', //生成輪播的超連結
+            });
+        });
+
+    </script>
+
+
+</body>
+
+</html>

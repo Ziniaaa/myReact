@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jq-瀑布流效果</title>
+    <style>
+        #container{
+            margin: auto;
+        }
+        .box{
+            width: 250px;
+            /* border: grey solid 1px; */
+            background-color: lightgrey;
+            padding: 5px;
+            text-align: center;
+            margin: 2px;
+        }
+        .box img{
+            width: 100%;
+            vertical-align: top;
+        }
+        p{
+            margin: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div class="box">
+            <img src="./images/image-1.jpg" alt="">
+            <p>photo1</p>
+        </div>
+        <div class="box">
+            <img src="./images/image-2.jpg" alt="">
+            <p>photo2</p>
+        </div>
+        <div class="box">
+            <img src="./images/image-3.jpg" alt="">
+            <p>photo3</p>
+        </div>
+        <div class="box">
+            <img src="./images/image-5.jpg" alt="">
+            <p>photo4</p>
+        </div>
+        <div class="box">
+            <img src="./images/image-4.jpg" alt="">
+            <p>photo5</p>
+        </div>
+    </div>
+</body>
+
+<script src="./js/jquery-1.11.3.min.js"></script>
+<script src="./js/imagesloaded.pkgd.min.js"></script>
+<script src="./js/masonry.pkgd.min.js"></script>
+<script>
+$(function(){
+    $('#container').imagesLoaded(function(){
+        // 瀑布流：圖片緊密貼合且依視窗寬度自動換行
+        $('#container').masonry({
+            // ↓左右留白，頁面置中
+            //搭配最外層container使用margin:auto
+            isFitWidth:true, 
+        });
+    });
+})
+
+</script>
+</html>
