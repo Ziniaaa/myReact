@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 export default function App() {
 
 
-  // 寫法一：較過時的寫法
+  // 寫法一：已過時的寫法
   // useEffect(()=>{
   //   $('.cssAnim1').hover(function(){
   //       $(this).addClass('imgScale');
