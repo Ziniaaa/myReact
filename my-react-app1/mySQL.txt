@@ -1,0 +1,36 @@
+(開一個文字檔作為備用)
+※下載XAMPP，在瀏覽器開啟MYADMIN/MYSQL
+※匯入資料庫資料
+
+/*取得學生的全部資料*/
+/*米字代表全部欄位的資料*/
+SELECT * FROM students;
+
+/*取得男同學的資料*/
+/*WHERE 可以視為 IF*/
+SELECT * 
+FROM students
+WHERE cSex='M';
+
+/*取得男同學中1987年出生的資料*/
+SELECT * 
+FROM students
+WHERE cSex='M' AND (cBirthday>='1987/01/01' AND cBirthday<='1987/12/31')
+
+/*取得12月出生的資料*/
+/*可以用在生日禮等活動*/
+SELECT cid,cName, MONTH(cBirthday)
+FROM students
+WHERE MONTH(cBirthday)=12;
+
+/*取得出生年月日的資料*/
+SELECT cid AS '座號',cName AS '姓名' ,cBirthday AS '生日' ,YEAR(cBirthday) AS '年', MONTH(cBirthday) AS '月', DAY(cBirthday)AS '日'
+FROM students;
+
+/*建立BMI欄位，並取到小數第2位*/
+/*ROUND(值,小數位) → 取出小數第N位*/
+/*POW(值,N次方) → 次方值*/
+/*ORDER BY → 依照...做排序，預設為遞增ASC，DESC為遞減*/
+SELECT * ,ROUND(cWeight / (POW(cHeight/100,2)),2) AS BMI
+FROM students
+ORDER BY ROUND(cWeight / (POW(cHeight/100,2)),2) DESC
